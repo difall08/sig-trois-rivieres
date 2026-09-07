@@ -1,0 +1,870 @@
+/* ======================================================
+   SIG TROIS-RIVIÈRES - DESIGN MODERNISÉ 2025
+   ====================================================== */
+
+   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Poppins:wght@400;600;700&display=swap');
+
+   :root {
+     --primary: #3a36e0;
+     --primary-dark: #2c29b3;
+     --secondary: #ff2965;
+     --accent: #00e5ff;
+     --dark: #121212;
+     --light: #f8f9ff;
+     --gray-100: #f1f5f9;
+     --gray-200: #e2e8f0;
+     --gray-300: #cbd5e1;
+     --gray-800: #1e293b;
+     --gradient-primary: linear-gradient(135deg, #3a36e0 0%, #5860ff 100%);
+     --gradient-secondary: linear-gradient(135deg, #ff2965 0%, #ff5757 100%);
+     --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.09);
+     --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.12);
+     --shadow-xl: 0 20px 45px rgba(0, 0, 0, 0.15);
+     --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+     --border-radius: 12px;
+   }
+   
+   /* ======================== */
+   /* Fondation et Reset       */
+   /* ======================== */
+   *, *::before, *::after {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+   }
+   
+   html, body {
+     margin: 0;
+     padding: 0;
+     font-family: 'Poppins', sans-serif;
+     height: 100%;
+     background-color: var(--light);
+     color: var(--dark);
+     line-height: 1.5;
+     scroll-behavior: smooth;
+     overflow-x: hidden;
+   }
+   
+   h1, h2, h3, h4, h5, h6 {
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 700;
+     letter-spacing: -0.5px;
+   }
+   #geolocateBtn {
+    border: 2px solid #ffc107 !important;
+    border-radius: 8px;
+    background-color: #fffaf0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  #removeLocationBtn {
+    border: 2px solid #6c757d !important; 
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+   /* ======================== */
+   /* Navigation Stylisée      */
+   /* ======================== */
+   /* Navbar Upgraded */
+.navbar {
+  background: rgba(18, 18, 24, 0.95) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+  transition: var(--transition);
+}
+
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: white !important;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.navbar-brand:hover {
+  color: var(--accent) !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  position: relative;
+  padding: 0.5rem 1rem;
+  margin: 0 0.2rem;
+  transition: var(--transition);
+}
+
+.navbar-dark .navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 3px;
+  background: var(--gradient-secondary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  border-radius: 2px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover::after,
+.navbar-dark .navbar-nav .active::after {
+  transform: scaleX(1);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .active {
+  color: white;
+}
+
+.navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+   
+   /* ======================== */
+   /* Layout principal         */
+   /* ======================== */
+   .container {
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 0 20px;
+   }
+   
+   /* ======================== */
+   /* Carte principale         */
+   /* ======================== */
+   .map-container {
+    display: flex;
+    height: calc(100vh - 76px);
+    position: relative; /* Confirmer que c'est bien en relative */
+    overflow: hidden;
+    margin-top: 76px; /* Ajustement pour la navbar fixe */
+  }
+
+   #map {
+     flex-grow: 1;
+     height: 100%;
+     width: 100%; /* Assurez-vous que la carte prend toute la largeur */
+     transition: var(--transition);
+     position: relative;
+     box-shadow: var(--shadow-inner);
+   }
+   
+   .ol-control button {
+     background-color: var(--primary) !important;
+     border-radius: 8px !important;
+     color: white;
+     border: none !important;
+     box-shadow: var(--shadow-sm) !important;
+     transition: var(--transition);
+   }
+   
+   .ol-control button:hover {
+     background-color: var(--primary-dark) !important;
+     transform: translateY(-2px);
+   }
+   
+   .ol-zoom {
+     top: 1rem;
+     right: 1rem;
+     left: unset;
+   }
+   
+   .ol-zoom .ol-zoom-in {
+     border-radius: 8px 8px 0 0 !important;
+     margin-bottom: 1px;
+   }
+   
+   .ol-zoom .ol-zoom-out {
+     border-radius: 0 0 8px 8px !important;
+   }
+   
+   /* ======================== */
+   /* Panneau latéral amélioré */
+   /* ======================== */
+   #sidepanel {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 340px;
+     height: 100%;
+     background: rgba(255, 255, 255, 0.95);
+     backdrop-filter: blur(10px);
+     -webkit-backdrop-filter: blur(10px);
+     padding: 1.5rem;
+     overflow-y: auto;
+     box-shadow: var(--shadow-md);
+     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+     z-index: 1000;
+     border-right: 1px solid var(--gray-200);
+   }
+   
+   #sidepanel::-webkit-scrollbar {
+     width: 6px;
+   }
+   
+   #sidepanel::-webkit-scrollbar-track {
+     background: var(--gray-100);
+     border-radius: 8px;
+   }
+   
+   #sidepanel::-webkit-scrollbar-thumb {
+     background: var(--gray-300);
+     border-radius: 8px;
+   }
+   
+   #sidepanel::-webkit-scrollbar-thumb:hover {
+     background: var(--primary);
+   }
+   
+   #sidepanel.closed {
+     transform: translateX(-100%);
+   }
+   
+   #sidepanel h5 {
+     font-size: 1.4rem;
+     font-weight: 700;
+     color: #004d73;
+     margin-bottom: 1.25rem;
+     border-bottom: 2px solid var(--primary);
+     padding-bottom: 0.75rem;
+     letter-spacing: -0.5px;
+   }
+   
+   .section-title {
+     font-size: 1.1rem;
+     color: #004d73;
+     padding-left: 12px;
+     margin-top: 1.75rem;
+     margin-bottom: 1rem;
+     font-weight: 600;
+     position: relative;
+     letter-spacing: -0.5px;
+   }
+   
+   .section-title::before {
+     content: '';
+     position: absolute;
+     left: 0;
+     top: 50%;
+     transform: translateY(-50%);
+     width: 4px;
+     height: 18px;
+     background: var(--gradient-primary);
+     border-radius: 4px;
+   }
+   
+   #sidepanel .form-check {
+     margin-bottom: 10px;
+     padding-left: 2rem;
+   }
+   
+   .form-check-input {
+     width: 1.2rem;
+     height: 1.2rem;
+     margin-top: 0.25rem;
+     margin-left: -2rem;
+     background-color: var(--gray-100);
+     border: 1px solid var(--gray-300);
+     border-radius: 4px;
+     transition: var(--transition);
+   }
+   
+   .form-check-input:checked {
+     background-color: var(--primary);
+     border-color: var(--primary);
+     box-shadow: 0 0 0 0.15rem rgba(58, 54, 224, 0.25);
+   }
+   
+   .form-check-input:focus {
+     box-shadow: 0 0 0 0.15rem rgba(58, 54, 224, 0.25);
+   }
+   
+   .form-check-label {
+     font-weight: 500;
+     cursor: pointer;
+     transition: var(--transition);
+   }
+   
+   .form-check-input:checked + .form-check-label {
+     color: var(--primary-dark);
+   }
+   
+   #baseMapSelector {
+     border: 1px solid var(--gray-300);
+     border-radius: 8px;
+     padding: 0.5rem 1rem;
+     font-size: 0.95rem;
+     background-color: var(--light);
+     font-weight: 500;
+     box-shadow: var(--shadow-sm);
+     transition: var(--transition);
+   }
+   
+   #baseMapSelector:focus {
+     border-color: var(--primary);
+     box-shadow: 0 0 0 3px rgba(58, 54, 224, 0.25);
+     outline: none;
+   }
+   
+   /* Bouton panneau latéral - CORRIGÉ */
+#sidepanel-toggle {
+  position: absolute; /* Changer de fixed à absolute */
+  top: 50%;
+  left: 340px; 
+  transform: translateY(-50%);
+  z-index: 1100;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  font-size: 1rem;
+  width: 36px;
+  height: 70px;
+  cursor: pointer;
+  border-radius: 0 8px 8px 0;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+   
+   #sidepanel.closed + #sidepanel-toggle,
+   #sidepanel.closed ~ #sidepanel-toggle {
+     left: 0;
+   }
+   
+   #sidepanel-toggle:hover {
+     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+     box-shadow: var(--shadow-lg);
+   }
+   
+   /* Boutons dans le panneau */
+   #sidepanel .btn {
+     position: relative;
+     overflow: hidden;
+     z-index: 1;
+     transition: var(--transition);
+     font-weight: 600;
+     letter-spacing: 0.2px;
+     border-radius: 8px;
+     padding: 0.5rem 1rem;
+     border: none;
+     text-transform: uppercase;
+     font-size: 0.85rem;
+   }
+   
+   #sidepanel .btn-sm {
+     padding: 0.4rem 0.8rem;
+     font-size: 0.8rem;
+   }
+   
+   #sidepanel .btn-outline-primary {
+     color: var(--primary);
+     border: 1px solid var(--primary);
+   }
+   
+   #sidepanel .btn-outline-success {
+     color: #10b981; /* Couleur verte personnalisée */
+     border: 1px solid #10b981;
+   }
+   
+   #sidepanel .btn-outline-info {
+     color: var(--accent);
+     border: 1px solid var(--accent);
+   }
+   
+   #sidepanel .btn::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     z-index: -1;
+     transform: scaleX(0);
+     transform-origin: right;
+     transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+   }
+   
+   #sidepanel .btn-outline-primary::before {
+     background-color: var(--primary);
+   }
+   
+   #sidepanel .btn-outline-success::before {
+     background-color: #10b981;
+   }
+   
+   #sidepanel .btn-outline-info::before {
+     background-color: var(--accent);
+   }
+   
+   
+   #sidepanel .btn:hover {
+     color: white;
+     border-color: transparent;
+     box-shadow: var(--shadow-md);
+   }
+   
+   #sidepanel .btn:hover::before {
+     transform: scaleX(1);
+     transform-origin: left;
+   }
+   
+   /* Légende améliorée */
+   #sidepanel p {
+     display: flex;
+     align-items: center;
+     margin-bottom: 0.5rem;
+     font-weight: 500;
+     font-size: 0.95rem;
+   }
+   
+   #sidepanel p img {
+     margin-right: 0.75rem;
+     border-radius: 4px;
+     box-shadow: var(--shadow-sm);
+   }
+   
+   /* ======================== */
+   /* Coordonnées de la souris */
+   /* ======================== */
+   .coords {
+     position: absolute;
+     bottom: 0.75rem;
+     left: 50%;
+     transform: translateX(-50%);
+     background: rgba(18, 18, 24, 0.75);
+     color: white;
+     padding: 0.5rem 1rem;
+     font-size: 0.9rem;
+     font-weight: 500;
+     border-radius: 8px;
+     z-index: 1000;
+     backdrop-filter: blur(4px);
+     -webkit-backdrop-filter: blur(4px);
+     box-shadow: var(--shadow-md);
+     border: 1px solid rgba(255, 255, 255, 0.1);
+     transition: var(--transition);
+   }
+   
+   .coords:hover {
+     background: rgba(18, 18, 24, 0.9);
+     box-shadow: var(--shadow-lg);
+   }
+   
+   /* ======================== */
+   /* Info parc (popup image)  */
+   /* ======================== */
+   #parcInfo {
+     position: absolute;
+     bottom: 2rem;
+     right: 2rem;
+     background: rgba(255, 255, 255, 0.95);
+     backdrop-filter: blur(10px);
+     -webkit-backdrop-filter: blur(10px);
+     padding: 1.25rem;
+     border-radius: var(--border-radius);
+     box-shadow: var(--shadow-lg);
+     z-index: 1100;
+     display: none;
+     max-width: 360px;
+     transform: translateY(0);
+     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+     border: 1px solid var(--gray-200);
+   }
+   
+   #parcInfo.visible {
+     transform: translateY(0);
+     opacity: 1;
+   }
+   
+   #parcClose {
+     position: absolute;
+     top: 0.5rem;
+     right: 0.5rem;
+     cursor: pointer;
+     font-weight: bold;
+     font-size: 1.5rem;
+     width: 30px;
+     height: 30px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 50%;
+     transition: var(--transition);
+     color: var(--gray-800);
+     z-index: 2;
+   }
+   
+   #parcClose:hover {
+     background-color: rgba(0, 0, 0, 0.05);
+     color: var(--primary);
+   }
+   
+   #parcName {
+     font-size: 1.25rem;
+     margin-bottom: 0.75rem;
+     font-weight: 700;
+     color: var(--primary-dark);
+     padding-right: 25px;
+     line-height: 1.3;
+     letter-spacing: -0.5px;
+     position: relative;
+     font-family: 'Montserrat', sans-serif;
+   }
+   
+   #parcName::after {
+     content: '';
+     position: absolute;
+     bottom: -4px;
+     left: 0;
+     width: 40px;
+     height: 3px;
+     background: var(--gradient-primary);
+     border-radius: 3px;
+   }
+   
+   #parcImg {
+     width: 100%;
+     border-radius: 8px;
+     margin-bottom: 1rem;
+     box-shadow: var(--shadow-md);
+     transition: transform 0.3s ease;
+     cursor: pointer;
+   }
+   
+   #parcImg:hover {
+     transform: scale(1.02);
+   }
+   
+   #parcMeta {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+   }
+   
+   #parcMeta li {
+     margin-bottom: 0.5rem;
+     font-size: 0.9rem;
+     color: var(--gray-800);
+     display: flex;
+     flex-wrap: wrap;
+   }
+   
+   #parcMeta strong {
+     color: var(--primary-dark);
+     width: 120px;
+     display: inline-block;
+     font-weight: 600;
+   }
+   
+   /* ======================== */
+   /* Tableau de bord graphique */
+   /* ======================== */
+   #dashboard {
+     background: linear-gradient(135deg, white 0%, var(--gray-100) 100%);
+     border: none;
+     border-radius: var(--border-radius);
+     padding: 2rem;
+     margin: 2rem auto;
+     box-shadow: var(--shadow-md);
+     transition: var(--transition);
+     overflow: hidden;
+   }
+   
+   #dashboard:hover {
+     box-shadow: var(--shadow-lg);
+   }
+   
+   #dashboard ul {
+     flex: 1 1 350px;
+   }
+   
+   #dashboard .list-group-item {
+     font-size: 1rem;
+     padding: 1rem 1.5rem;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     background-color: transparent;
+     border: none;
+     border-bottom: 1px solid var(--gray-200);
+     cursor: pointer;
+     transition: var(--transition);
+   }
+   
+   #dashboard .list-group-item:last-child {
+     border-bottom: none;
+   }
+   
+   #dashboard .list-group-item:hover {
+     background-color: rgba(58, 54, 224, 0.05);
+     transform: translateX(5px);
+   }
+   
+   #dashboard .list-group-item span:first-child {
+     font-weight: 500;
+   }
+   
+   #dashboard .list-group-item span.fw-bold {
+     font-size: 1.1rem;
+     font-weight: 700 !important;
+     color: var(--primary-dark);
+   }
+   
+   #chartCanvas {
+     flex: 1 1 550px;
+     height: 300px !important;
+     max-width: 100%;
+     transition: var(--transition);
+   }
+   
+   /* ======================== */
+   /* Modale agrandie stylisée */
+   /* ======================== */
+   .modal {
+     position: fixed;
+     top: 0; 
+     left: 0;
+     width: 100%; 
+     height: 100%;
+     background: rgba(0, 0, 0, 0.85);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     z-index: 2000;
+     opacity: 0;
+     visibility: hidden;
+     transition: all 0.3s ease;
+     backdrop-filter: blur(5px);
+     -webkit-backdrop-filter: blur(5px);
+   }
+   
+   .modal.active {
+     opacity: 1;
+     visibility: visible;
+   }
+   
+   .modal-content {
+     position: relative;
+     width: 80%;
+     max-width: 800px;
+     transform: scale(0.8);
+     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+   }
+   
+   .modal.active .modal-content {
+     transform: scale(1);
+   }
+   
+   .modal img {
+     width: 100%;
+     border-radius: 12px;
+     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+   }
+   
+   .modal .close {
+     position: absolute;
+     top: -40px;
+     right: 0;
+     font-size: 2.5rem;
+     color: white;
+     cursor: pointer;
+     background: none;
+     border: none;
+     opacity: 0.8;
+     transition: var(--transition);
+   }
+   
+   .modal .close:hover {
+     opacity: 1;
+     transform: rotate(90deg);
+   }
+   
+   /* ======================== */
+   /* Responsive Design - AMÉLIORÉ */
+   /* ======================== */
+   @media (max-width: 992px) {
+     #sidepanel {
+       width: 300px;
+     }
+     
+     #sidepanel-toggle {
+       left: 300px;
+     }
+     
+     #dashboard {
+       padding: 1.5rem;
+     }
+   }
+   
+   @media (max-width: 768px) {
+     /* Solution pour le problème de la carte non visible */
+     .map-container {
+       flex-direction: column;
+       height: auto;
+       min-height: calc(100vh - 76px);
+     }
+     
+     #map {
+       height: calc(100vh - 76px - 200px); /* Ajusté pour donner de l'espace au panneau */
+       min-height: 400px; /* Hauteur minimale pour la carte */
+     }
+     
+     #dashboard {
+       flex-direction: column;
+       align-items: stretch;
+       padding: 1.25rem;
+     }
+     
+     #sidepanel {
+       width: 100%;
+       height: auto;
+       max-height: 200px; /* Hauteur fixe en mode mobile */
+       position: relative;
+       top: 0;
+       left: 0;
+       border-right: none;
+       border-bottom: 1px solid var(--gray-200);
+       transform: none !important;
+       display: block !important;
+     }
+     
+     
+     #sidepanel.closed {
+       max-height: 50px;
+       overflow: hidden;
+       padding: 0.5rem 1rem;
+       transform: none !important;
+     }
+     
+     #sidepanel.closed h5::after {
+       content: '▼';
+       margin-left: 10px;
+       font-size: 0.8rem;
+     }
+     
+     #sidepanel h5 {
+       cursor: pointer;
+       user-select: none;
+     }
+     
+     /* Correction du bouton de toggle en mobile */
+     #sidepanel-toggle {
+      display: none !important; /* Maintenir le masquage en mobile comme défini précédemment */
+    }
+     
+     .navbar-brand {
+       font-size: 1.1rem;
+     }
+     
+     .section-title {
+       font-size: 1rem;
+     }
+     
+     #parcInfo {
+       bottom: 1rem;
+       right: 1rem;
+       left: 1rem;
+       max-width: none;
+     }
+     
+     .coords {
+       font-size: 0.8rem;
+       padding: 0.4rem 0.8rem;
+     }
+   }
+   
+   @media (max-width: 576px) {
+     body {
+       padding-top: 56px; /* Ajuster selon la hauteur de la navbar */
+     }
+     
+     .map-container {
+       margin-top: 56px;
+     }
+     
+     .navbar {
+       padding: 10px 0;
+     }
+     
+     #dashboard {
+       margin: 1rem;
+       padding: 1rem;
+     }
+     
+     #dashboard .list-group-item {
+       padding: 0.75rem 1rem;
+     }
+     
+     h5, .section-title {
+       margin-top: 1rem;
+       margin-bottom: 0.75rem;
+     }
+     
+     #parcInfo {
+       padding: 1rem;
+       bottom: 1rem;
+       right: 0.5rem;
+       left: 0.5rem;
+     }
+     
+     #parcName {
+       font-size: 1.1rem;
+     }
+   }
+   
+   /* ======================== */
+   /* Animations et transitions */
+   /* ======================== */
+   .fade-in {
+     animation: fadeIn 0.5s ease forwards;
+   }
+   
+   @keyframes fadeIn {
+     from { opacity: 0; }
+     to { opacity: 1; }
+   }
+   
+   .slide-in {
+     animation: slideIn 0.5s ease forwards;
+   }
+   
+   @keyframes slideIn {
+     from { transform: translateY(20px); opacity: 0; }
+     to { transform: translateY(0); opacity: 1; }
+   }
+   
+   /* Animations pour les élements de liste */
+   .list-animation li {
+     opacity: 0;
+     transform: translateY(20px);
+     animation: listFade 0.5s ease forwards;
+   }
+   
+   @keyframes listFade {
+     to { opacity: 1; transform: translateY(0); }
+   }
+   
+   .list-animation li:nth-child(1) { animation-delay: 0.1s; }
+   .list-animation li:nth-child(2) { animation-delay: 0.2s; }
+   .list-animation li:nth-child(3) { animation-delay: 0.3s; }
+   .list-animation li:nth-child(4) { animation-delay: 0.4s; }
+   .list-animation li:nth-child(5) { animation-delay: 0.5s; }
+   
+   /* Ajout pour le mode mobile - interaction panneau */
+   @media (max-width: 768px) {
+     /* Animation du panneau en mobile */
+     #sidepanel {
+       transition: max-height 0.4s ease-in-out, padding 0.3s ease;
+     }
+   }

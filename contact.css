@@ -1,0 +1,84 @@
+/* Global Styles */
+body {
+  padding-top: 70px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* Section contact */
+.contact-section {
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+.contact-section h2 {
+  color: #004d73;
+  font-weight: 700;
+}
+
+.contact-section p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Form Styles */
+form .form-label {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+form .form-control {
+  border-radius: 6px;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Submit Button */
+form .btn {
+  background-color: #004d73;
+  border: none;
+  font-weight: 600;
+  padding: 12px;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  font-size: 1.1rem;
+}
+
+form .btn:hover {
+  background-color: #007bff;
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+  background-color: #343a40;
+  color: white;
+  padding: 20px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .contact-section {
+    padding: 40px 15px;
+  }
+
+  form .btn {
+    font-size: 1rem;
+  }
+
+  form .form-label {
+    font-size: 0.95rem;
+  }
+}
