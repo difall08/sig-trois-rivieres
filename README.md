@@ -1,4 +1,4 @@
-# 🚴 SIG Trois-Rivières — Réseau Cyclable et Parcs Urbains
+# 🚴 SIG Trois-Rivières - Réseau Cyclable et Parcs Urbains
 
 Application web SIG interactive pour l'exploration du réseau cyclable et des parcs urbains de la ville de Trois-Rivières, Québec.
 
